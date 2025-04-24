@@ -103,7 +103,8 @@ export default function quiz() {
         if (index + 1 < perguntas.length) {
             setIndex(index + 1);
         } else {
-            router.push('/resultado' + resposta );
+            const respostasString = JSON.stringify(resposta); // Converte o array para string
+            router.push(`/resultado?respostas=${encodeURIComponent(respostasString)}`); // Codifica e passa como parâmetro
         }
     };
 
