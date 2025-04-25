@@ -3,14 +3,10 @@ import React from 'react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
 export default function resultado() {
-    const router = useRouter(); // Para navegação
+    const router = useRouter();
     const { respostas } = useLocalSearchParams(); // Obtém as respostas da URL
     const respostasArray = JSON.parse(decodeURIComponent(respostas)); // Converte de volta para array
-
-    // Calcula a pontuação total
     const pontuacaoTotal = respostasArray.reduce((acc, curr) => acc + curr, 0);
-
-    // Determina o feedback geral com base na pontuação total
     let feedbackGeral = '';
     if (pontuacaoTotal <= 10) {
         feedbackGeral =
@@ -39,7 +35,6 @@ export default function resultado() {
                 ))}
             </View>
 
-            {/* Botão Refazer */}
             <View style={styles.buttonContainer}>
                 <Button title="Refazer" onPress={() => router.push('/')} color="#007BFF" />
             </View>

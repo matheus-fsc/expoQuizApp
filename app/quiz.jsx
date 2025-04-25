@@ -104,10 +104,12 @@ export default function quiz() {
             setIndex(index + 1);
         } else {
             const respostasString = JSON.stringify(resposta); // Converte o array para string
-            router.push(`/resultado?respostas=${encodeURIComponent(respostasString)}`); // Codifica e passa como parâmetro
+            router.push({
+                pathname: '/resultado',
+                query: { respostas: encodeURIComponent(respostasString) }, // Codifica e envia o parâmetro
+            });
         }
     };
-
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
